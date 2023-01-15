@@ -10,4 +10,4 @@ Main goal is to create a terminal for crypto algorithmic trading.
 - Running multiple bots at the same time using different strategies with different or same account.
 - Tracking the progress.
 
-### Final step would be dockerizing the project and why not running the thing on the cloud 🌥 
+### Final step would be dockerizing the project and why not running the thing on the cloud ☁️ 
