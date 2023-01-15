@@ -1,0 +1,2 @@
+time: 15/01/2023 17:51, type: buy, price: $20888.3, amount: 0.004787 BTC, balance: $0.007707900000013979, BTC held: 0.004787 BTC
+time: 15/01/2023 18:03, type: sell, price: $20917.2, amount: 0.004787 BTC, balance: $100.13834430000001, BTC held: 0 BTC
