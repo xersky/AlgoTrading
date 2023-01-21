@@ -25,7 +25,7 @@ with open("balance.txt", "r") as file:
             btc_held = float(variable_value)
 
 # Import keys from file
-with open("keys.txt", "r") as file:
+with open("keys/main_keys.txt", "r") as file:
     contents = file.readlines()
     for line in contents:
         variable_name, variable_value = line.strip().split(":")
@@ -34,8 +34,11 @@ with open("keys.txt", "r") as file:
         elif variable_name == "api_secret":
             api_secret = variable_value
 
+# TODO Run the script with args to chose between DiveMode and TestMode
 # Using the binance testnet
-Client.API_URL = Client.API_TESTNET_URL
+# Client.API_URL = Client.API_TESTNET_URL
+
+# Currently diving
 
 # Authenticate with the Binance API using your API key and secret key
 client = Client(api_key=api_key, api_secret=api_secret)
@@ -48,7 +51,7 @@ with open('trade_history.txt', 'a+') as f:
     # Loop indefinitely to check the RSI in real-time
     while True:
 
-        symbol = 'BTCUSDT'
+        symbol = 'BTCBUSD'
         # Choosing the timeframe
         interval = Client.KLINE_INTERVAL_1MINUTE
 
@@ -74,8 +77,9 @@ with open('trade_history.txt', 'a+') as f:
             # Get the current BTC price
             ticker = client.futures_ticker(symbol=symbol)
             current_price = float(ticker['lastPrice'])
+            # TODO Auto-manage the LOT-SIZE depends on the symbol from the Binance API
             # Calculate the number of BTC to buy based on risk/reward ratio
-            btc_to_buy = round(balance / current_price, 6)
+            btc_to_buy = round(balance / current_price, 5)
             # Place a buy order using the Binance API
             order = client.order_market_buy(symbol=symbol, quantity=btc_to_buy)
             # Deduct the cost of the BTC from the balance

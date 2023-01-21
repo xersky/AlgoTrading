@@ -2,7 +2,7 @@
 .idea
 
 # private keys
-scalpingStrats/RSI/keys.txt
+scalpingStrats/RSI/keys/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

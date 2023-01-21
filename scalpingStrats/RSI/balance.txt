@@ -1,2 +1,2 @@
-balance:100.13834430000001
+balance:200
 btc_held:0
