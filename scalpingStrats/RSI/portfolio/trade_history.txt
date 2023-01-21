@@ -1,0 +1,17 @@
+time: 21/01/2023 03:34, type: buy, price: $22597.6, amount: 0.00885 BTC, balance: $0.011240000000015016, BTC held: 0.00885 BTC
+time: 21/01/2023 04:25, type: sell, price: $22568.6, amount: 0.00885 BTC, balance: $199.74335000000002, BTC held: 0 BTC
+time: 21/01/2023 05:02, type: buy, price: $22530.2, amount: 0.00887 BTC, balance: $-0.09952399999997397, BTC held: 0.00887 BTC
+time: 21/01/2023 05:14, type: sell, price: $22567.0, amount: 0.00887 BTC, balance: $200.06976600000002, BTC held: 0 BTC
+time: 21/01/2023 05:52, type: buy, price: $22594.5, amount: 0.00885 BTC, balance: $0.10844099999999912, BTC held: 0.00885 BTC
+time: 21/01/2023 06:25, type: sell, price: $22606.6, amount: 0.00885 BTC, balance: $200.176851, BTC held: 0 BTC
+time: 21/01/2023 06:48, type: buy, price: $22589.6, amount: 0.00886 BTC, balance: $0.032995000000028085, BTC held: 0.00886 BTC
+time: 21/01/2023 07:14, type: sell, price: $22591.8, amount: 0.00886 BTC, balance: $200.196343, BTC held: 0 BTC
+time: 21/01/2023 08:32, type: buy, price: $22617.5, amount: 0.00885 BTC, balance: $0.03146800000001804, BTC held: 0.00885 BTC
+time: 21/01/2023 08:39, type: sell, price: $22646.5, amount: 0.00885 BTC, balance: $200.45299300000002, BTC held: 0 BTC
+time: 21/01/2023 10:01, type: buy, price: $22694.2, amount: 0.00883 BTC, balance: $0.06320700000003399, BTC held: 0.00883 BTC
+time: 21/01/2023 10:10, type: sell, price: $22743.2, amount: 0.00883 BTC, balance: $200.88566300000002, BTC held: 0 BTC
+time: 21/01/2023 11:25, type: buy, price: $23087.5, amount: 0.0087 BTC, balance: $0.02441300000003821, BTC held: 0.0087 BTC
+time: 21/01/2023 12:27, type: sell, price: $22799.9, amount: 0.0087 BTC, balance: $198.38354300000003, BTC held: 0 BTC
+time: 21/01/2023 13:36, type: buy, price: $22929.5, amount: 0.00865 BTC, balance: $0.043368000000043594, BTC held: 0.00865 BTC
+time: 21/01/2023 13:41, type: sell, price: $23024.7, amount: 0.00865 BTC, balance: $199.20702300000005, BTC held: 0 BTC
+time: 21/01/2023 14:12, type: buy, price: $22971.8, amount: 0.00867 BTC, balance: $0.04151700000002734, BTC held: 0.00867 BTC
