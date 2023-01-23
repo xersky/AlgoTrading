@@ -9,7 +9,7 @@ WORKDIR /AlgoTrading
 # Copying the requirements file to be installed
 COPY requirements.txt requirements.txt
 
-# Installing the libraries specified in the requirements
+# Installing the libraries specified in the requirements (caching the installed requirements to not re-install in every build)
 RUN pip install --no-cache-dir  -r requirements.txt
 
 # Copying the project directory
