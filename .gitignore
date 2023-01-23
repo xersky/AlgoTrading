@@ -4,6 +4,9 @@
 # private keys
 scalpingStrats/RSI/keys/
 
+# Information of balance and trades
+scalpingStrats/RSI/portfolio/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

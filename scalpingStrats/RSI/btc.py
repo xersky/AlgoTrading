@@ -1,4 +1,3 @@
-import math
 import pandas as pd
 import ta
 import datetime
@@ -7,7 +6,7 @@ from binance.client import Client  # install the python-binance library
 
 # Function to update values of balance after trades
 def update_file(balance_var, btc_held_var):
-    with open("balance.txt", "w") as file:
+    with open("portfolio/balance.txt", "w") as file:
         file.write(f"balance:{balance_var}\nbtc_held:{btc_held_var}")
 
 
@@ -15,7 +14,7 @@ def update_file(balance_var, btc_held_var):
 trades = []  # List to store trades
 
 # Import balance values from file
-with open("balance.txt", "r") as file:
+with open("portfolio/balance.txt", "r") as file:
     contents = file.readlines()
     for line in contents:
         variable_name, variable_value = line.strip().split(":")
@@ -47,7 +46,7 @@ client = Client(api_key=api_key, api_secret=api_secret)
 print(client.get_account())
 
 # Open a file to store the trade history
-with open('trade_history.txt', 'a+') as f:
+with open('portfolio/trade_history.txt', 'a+') as f:
     # Loop indefinitely to check the RSI in real-time
     while True:
 
