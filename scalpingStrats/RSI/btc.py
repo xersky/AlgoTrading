@@ -24,7 +24,7 @@ with open("portfolio/balance.txt", "r") as file:
             btc_held = float(variable_value)
 
 # Import keys from file
-with open("keys/main_keys.txt", "r") as file:
+with open("keys/test_keys.txt", "r") as file:
     contents = file.readlines()
     for line in contents:
         variable_name, variable_value = line.strip().split(":")
@@ -35,9 +35,7 @@ with open("keys/main_keys.txt", "r") as file:
 
 # TODO Run the script with args to chose between DiveMode and TestMode
 # Using the binance testnet
-# Client.API_URL = Client.API_TESTNET_URL
-
-# Currently diving
+Client.API_URL = Client.API_TESTNET_URL
 
 # Authenticate with the Binance API using your API key and secret key
 client = Client(api_key=api_key, api_secret=api_secret)
