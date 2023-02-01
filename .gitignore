@@ -7,6 +7,12 @@ scalpingStrats/RSI/keys/
 # Information of balance and trades
 scalpingStrats/RSI/portfolio/
 
+scalpingStrats/RSI/legacy trades/
+
+testingStrats/RSI/output.txt
+testingStrats/RSI/console_result.png
+testingStrats/RSI/plot_result.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
