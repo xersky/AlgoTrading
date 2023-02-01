@@ -86,7 +86,7 @@ with open('portfolio/trade_history.txt', 'a+') as f:
             df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
             # Calculate the RSI for the close column
             df['close'] = pd.to_numeric(df['close'])
-            current_rsi = ta.momentum.rsi(df['close'], 14)
+            current_rsi = ta.momentum.rsi(df['close'], 14).__round__(2)
 
             # Print the RSI value
             # print(current_rsi.iloc[-1])  # (enable statement to see the values of RSI in real time)
@@ -112,13 +112,13 @@ with open('portfolio/trade_history.txt', 'a+') as f:
                 # Record the trade
                 trades.append({'time': datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), 'type': 'buy',
                                'price': current_price, 'amount': btc_to_buy, 'rsi': current_rsi.iloc[-1],
-                               'balance': balance})
+                               'balance': balance.__round__(2)})
                 print(trades[-1])
                 # Write the trade details to the trade history file
                 f.write(
                     f'time: {datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}, type: buy,'
-                    f' rsi: ${current_rsi.iloc[-1].__round__(2)}, price: ${current_price}, amount: {btc_to_buy} BTC,'
-                    f' balance: ${balance}, BTC held: {btc_held} BTC\n')
+                    f' rsi: {current_rsi.iloc[-1]}, price: ${current_price}, amount: {btc_to_buy} BTC,'
+                    f' balance: ${balance.__round__(2)}, BTC held: {btc_held} BTC\n')
                 f.flush()
 
             # Check if RSI is overbought (above RSI sell threshold) and we have some BTC
@@ -138,13 +138,13 @@ with open('portfolio/trade_history.txt', 'a+') as f:
                 # Record the trade
                 trades.append(
                     {'time': datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"), 'type': 'sell',
-                     'price': current_price, 'amount': btc_to_sell, 'rsi': current_rsi.iloc[-1].__round__(2),
-                     'balance': balance})
+                     'price': current_price, 'amount': btc_to_sell, 'rsi': current_rsi.iloc[-1],
+                     'balance': balance.__round__(2)})
                 print(trades[-1])
                 # Write the trade details to the trade history file
                 f.write(f'time: {datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}, type: sell,'
-                        f' rsi: ${current_rsi.iloc[-1].__round__(2)}, price: ${current_price}, amount: {btc_to_sell} BTC,'
-                        f' balance: ${balance}, BTC held: {btc_held} BTC\n')
+                        f' rsi: {current_rsi.iloc[-1]}, price: ${current_price}, amount: {btc_to_sell} BTC,'
+                        f' balance: ${balance.__round__(2)}, BTC held: {btc_held} BTC\n')
                 f.flush()
         # Calculating the sleeping period of the loop to be 1 min when localtime is exactly at 0 seconds
         sleeping_period = 60 - time.localtime().tm_sec
