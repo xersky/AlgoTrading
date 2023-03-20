@@ -93,18 +93,21 @@ with open('portfolio/trade_history.txt', 'a+') as f:
 
             # Check if RSI is oversold (below RSI buy threshold) and we don't have any BTC
             if current_rsi.iloc[-1] < rsi_buy_threshold and btc_held == 0:
-                # Get the current BTC price
-                # ticker = client.futures_ticker(symbol=symbol)
-                current_price = float(client.futures_ticker(symbol=symbol)['lastPrice'])
                 # Calculate the amount to spend based on risk/reward ratio
                 spend = balance / risk_reward_ratio
-                # TODO Auto-manage the LOT-SIZE depends on the symbol from the Binance API
-                # Calculate the number of BTC to buy based on risk/reward ratio
-                btc_to_buy = round(spend / current_price, 5)
                 # Place a buy order using the Binance API
-                order = client.order_market_buy(symbol=symbol, quantity=btc_to_buy)
-                # Deduct the cost of the BTC from the balance
-                balance -= btc_to_buy * current_price
+                order = client.order_market_buy(symbol=symbol, quoteOrderQty=spend.__round__(2))
+                # Get the current BTC price
+                # ticker = client.futures_ticker(symbol=symbol)
+                current_price = float(order['fills'][0]['price'])
+                # print("executedQty:", float(order['executedQty']))
+                print("ORDER:", order)
+                # Retrieve the quantity of BTC bought from the order (result of API response)
+                btc_to_buy = float(order['executedQty'])
+                # Retrieve the order cost of the BTC bought (result of API response)
+                order_cost = float(order['cummulativeQuoteQty'])
+                # Deduct the cost of the BTC bought from the balance
+                balance -= order_cost
                 # Update the BTC held
                 btc_held += btc_to_buy
                 # Update in text file
@@ -127,10 +130,14 @@ with open('portfolio/trade_history.txt', 'a+') as f:
                 btc_to_sell = btc_held
                 # Sell all BTC held
                 order = client.order_market_sell(symbol=symbol, quantity=btc_to_sell)
+                print("ORDER:", order)
                 # Get the current BTC price
                 # ticker = client.futures_ticker(symbol=symbol)
-                current_price = float(client.futures_ticker(symbol=symbol)['lastPrice'])
-                balance += btc_held * current_price
+                current_price = float(order['fills'][0]['price'])
+                # Retrieve the total value of the BTC sold (result of API response)
+                order_value = float(order['cummulativeQuoteQty'])
+                # Update balance
+                balance += order_value
                 # Reset the BTC held
                 btc_held = 0
                 # Update in text file
