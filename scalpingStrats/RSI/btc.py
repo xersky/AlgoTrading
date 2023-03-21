@@ -71,10 +71,7 @@ with open('portfolio/trade_history.txt', 'a+') as f:
             Other reason, is to optimize in terms of performance and efficiency
         """
         current_time = time.localtime()
-        # print(current_time.tm_sec)
-        # print('looping')  # Debugging to see the frequency of the loop
         if current_time.tm_sec == 0:
-            # print('inside')  # Debugging we passed the condition
             # Retrieve the klines for the symbol and interval
             klines = client.futures_klines(symbol=symbol, interval=interval)
 
@@ -99,10 +96,7 @@ with open('portfolio/trade_history.txt', 'a+') as f:
                 # Place a buy order using the Binance API
                 order = client.order_market_buy(symbol=symbol, quoteOrderQty=math.floor(spend))
                 # Get the current BTC price
-                # ticker = client.futures_ticker(symbol=symbol)
                 current_price = float(order['fills'][0]['price'])
-                # print("executedQty:", float(order['executedQty']))
-                print("ORDER:", order)
                 # Retrieve the quantity of BTC bought from the order (result of API response)
                 btc_to_buy = float(order['executedQty'])
                 # Retrieve the order cost of the BTC bought (result of API response)
@@ -133,7 +127,6 @@ with open('portfolio/trade_history.txt', 'a+') as f:
                 order = client.order_market_sell(symbol=symbol, quantity=btc_to_sell)
                 print("ORDER:", order)
                 # Get the current BTC price
-                # ticker = client.futures_ticker(symbol=symbol)
                 current_price = float(order['fills'][0]['price'])
                 # Retrieve the total value of the BTC sold (result of API response)
                 order_value = float(order['cummulativeQuoteQty'])
@@ -156,5 +149,5 @@ with open('portfolio/trade_history.txt', 'a+') as f:
                 f.flush()
         # Calculating the sleeping period of the loop to be 1 min when localtime is exactly at 0 seconds
         sleeping_period = 60 - time.localtime().tm_sec
-        # print(sleeping_period)  # Making sure the sleeping period is exactly 1 min for every loop
+        # Making sure the sleeping period is exactly 1 min for every loop
         time.sleep(sleeping_period)
