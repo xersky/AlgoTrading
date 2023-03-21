@@ -1,3 +1,4 @@
+import math
 import time
 import pandas as pd
 import ta
@@ -96,7 +97,7 @@ with open('portfolio/trade_history.txt', 'a+') as f:
                 # Calculate the amount to spend based on risk/reward ratio
                 spend = balance / risk_reward_ratio
                 # Place a buy order using the Binance API
-                order = client.order_market_buy(symbol=symbol, quoteOrderQty=spend.__round__(2))
+                order = client.order_market_buy(symbol=symbol, quoteOrderQty=math.floor(spend))
                 # Get the current BTC price
                 # ticker = client.futures_ticker(symbol=symbol)
                 current_price = float(order['fills'][0]['price'])
